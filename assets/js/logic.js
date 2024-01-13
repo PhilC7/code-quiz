@@ -65,12 +65,13 @@ function resetGame() {
 
 function askQuestion() {
 
+    feedbackContainer.classList.add("hide");
+
     currentQuestion = questions[questionNumber];
     var title = currentQuestion.title;
     questionTitle.textContent = title;
 
     currentQuestion.choices.forEach(choice => {
-
         //declare button variable and create button
         var button = document.createElement("button");
 
@@ -79,9 +80,34 @@ function askQuestion() {
 
         //add button to choices container
         choiceContainer.appendChild(button)
-        console.log(choice);
-    });
+
+        button.addEventListener("click", checkAnswer)
+    })
+};
+
+// call check question function (event listener)
+
+/******************************
+*   Check Answer Function
+******************************/
+
+function checkAnswer(event) {
+    var answer = currentQuestion.answer;
+    var selectedAnswer = event.target
+    if (selectedAnswer.textContent == answer) {
+        feedbackContainer.textContent = "Correct!";
+        feedbackContainer.classList.remove("hide");
+    }
+
+    if (selectedAnswer.textContent !== answer) {
+        timeLeft -= 10;
+        time.textContent = timeLeft;
+        feedbackContainer.textContent = "Incorrect!";
+        feedbackContainer.classList.remove("hide");
+    }
 }
+
+
 
 /******************************
 *   Timer Function
