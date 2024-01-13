@@ -11,3 +11,7 @@ var finalScore = document.getElementById("final-score");
 var initials = document.getElementById("initials");
 var submitBtn = document.getElementById("submit");
 var feedbackContainer = document.getElementById("feedback");
+
+/******************************
+*   Set Variables  
+******************************/
