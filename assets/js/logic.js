@@ -67,7 +67,6 @@ function resetGame() {
 function askQuestion() {
 
     choiceContainer.innerHTML = "";
-
     // set current question to array number
     currentQuestion = questions[questionNumber];
     questionTitle.textContent = currentQuestion.title;
@@ -146,12 +145,19 @@ function nextQuestion() {
 *   Timer Function
 ******************************/
 function timer() {
-    countdown = setInterval(function () {
+    var countdown = setInterval(function () {
         timeLeft--
-        time.textContent = timeLeft;
 
-        if (timeLeft === 0) {
-            //add stop game function
+        if (timeLeft > 0) {
+            time.textContent = timeLeft;
+        }
+
+        if (timeLeft <= 0 || questionNumber === questions.length) {
+            clearInterval(countdown);
+            score = timeLeft;
+            time.textContent = 0;
+            questionContainer.classList.add("hide");
+            endScreen.classList.remove("hide");
         }
     }, 1000) // countdown 1 second at a time
 }
