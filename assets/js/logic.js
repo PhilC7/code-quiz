@@ -43,6 +43,7 @@ function startGame(event) {
     questionContainer.classList.remove("hide");
 
     askQuestion();
+
 }
 
 
@@ -65,12 +66,21 @@ function resetGame() {
 
 function askQuestion() {
 
-    feedbackContainer.classList.add("hide");
+    choiceContainer.innerHTML = "";
 
+    // set current question to array number
     currentQuestion = questions[questionNumber];
-    var title = currentQuestion.title;
-    questionTitle.textContent = title;
+    questionTitle.textContent = currentQuestion.title;
+    displayChoices()
 
+
+};
+
+/******************************
+*   Display Choices Function
+******************************/
+
+function displayChoices() {
     currentQuestion.choices.forEach(choice => {
         //declare button variable and create button
         var button = document.createElement("button");
@@ -83,9 +93,8 @@ function askQuestion() {
 
         button.addEventListener("click", checkAnswer)
     })
-};
+}
 
-// call check question function (event listener)
 
 /******************************
 *   Check Answer Function
@@ -97,15 +106,39 @@ function checkAnswer(event) {
     if (selectedAnswer.textContent == answer) {
         feedbackContainer.textContent = "Correct!";
         feedbackContainer.classList.remove("hide");
-    }
-
-    if (selectedAnswer.textContent !== answer) {
+    } else if (selectedAnswer.textContent !== answer) {
         timeLeft -= 10;
         time.textContent = timeLeft;
         feedbackContainer.textContent = "Incorrect!";
         feedbackContainer.classList.remove("hide");
     }
+
+    setTimeout(function () {
+        feedback.classList.add("hide");
+        feedback.textContent = "";
+    }, 1000);
+
+    questionNumber++;
+
+    if (currentQuestion === questions.length) {
+        questionContainer.classList.add("hide");
+        endScreen.classList.remove("hide");
+    } else {
+        askQuestion();
+    }
 }
+
+/******************************
+*   Next Question Function
+******************************/
+
+function nextQuestion() {
+    feedbackContainer.classList.add("hide");
+    currentQuestion++
+    choiceContainer.innerHTML = "";
+    questionTitle.textContent = ""
+}
+
 
 
 
