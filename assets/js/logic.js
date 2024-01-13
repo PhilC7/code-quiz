@@ -3,6 +3,7 @@
 ******************************/
 
 var startScreen = document.getElementById("start-screen");
+var startQuiz = document.getElementById("start");
 var questionContainer = document.getElementById("questions");
 var questionTitle = document.getElementById("question-title");
 var choiceContainer = document.getElementById("choices");
@@ -21,6 +22,7 @@ var score = 0;
 var timeLeft; // Declare timeLeft 
 var countdown; // Declare countdown
 var questionNumber = 0;
+var currentQuestion = 0;
 
 
 /******************************
@@ -28,7 +30,7 @@ var questionNumber = 0;
 ******************************/
 
 // Start game
-startScreen.addEventListener("click", startGame)
+startQuiz.addEventListener("click", startGame)
 
 /******************************
 *   Start Game  
@@ -40,6 +42,7 @@ function startGame(event) {
     // Show question container
     questionContainer.classList.remove("hide");
 
+    askQuestion();
 }
 
 
@@ -52,6 +55,32 @@ function resetGame() {
     timeLeft = 75;
     time.textContent = timeLeft;
     timer();
+}
+
+
+
+/******************************
+*   Ask Question Function
+******************************/
+
+function askQuestion() {
+
+    currentQuestion = questions[questionNumber];
+    var title = currentQuestion.title;
+    questionTitle.textContent = title;
+
+    currentQuestion.choices.forEach(choice => {
+
+        //declare button variable and create button
+        var button = document.createElement("button");
+
+        // set button text
+        button.textContent = choice;
+
+        //add button to choices container
+        choiceContainer.appendChild(button)
+        console.log(choice);
+    });
 }
 
 /******************************
@@ -70,12 +99,25 @@ function timer() {
 
 
 
+
+
+/******************************
+*   Testing Section
+******************************/
+
+
+
+
+
+
+
+
 /******************************
 *   Reference to question access - Delete logs when finished
 ******************************/
 // access to questions
-console.log(questions[0].title);
-// access to choices
-console.log(questions[0].choices);
-// access to correct answer
-console.log(questions[0].answer);
+// console.log(questions[0].title);
+// // access to choices
+// console.log(questions[0].choices);
+// // access to correct answer
+// console.log(questions[0].answer);
