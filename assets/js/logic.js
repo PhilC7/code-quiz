@@ -15,3 +15,7 @@ var feedbackContainer = document.getElementById("feedback");
 /******************************
 *   Set Variables  
 ******************************/
+
+var score = 0;
+var timer = 75;
+var countdown; //variable to later set timer
