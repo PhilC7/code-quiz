@@ -24,6 +24,7 @@ var countdown; // Declare countdown
 var questionNumber = 0;
 var currentQuestion = 0;
 
+
 /******************************
 *   Event Listeners
 ******************************/
@@ -33,6 +34,7 @@ startQuiz.addEventListener("click", startGame)
 
 // Submit scores
 submitBtn.addEventListener("click", submit);
+
 
 /******************************
 *   Start Game  
@@ -48,6 +50,7 @@ function startGame(event) {
 
 }
 
+
 /******************************
 *   Quiz Reset 
 ******************************/
@@ -58,6 +61,7 @@ function resetGame() {
     time.textContent = timeLeft;
     timer();
 }
+
 
 /******************************
 *   Ask Question Function
@@ -73,6 +77,7 @@ function askQuestion() {
 
 
 };
+
 
 /******************************
 *   Display Choices Function
@@ -92,6 +97,7 @@ function displayChoices() {
         button.addEventListener("click", checkAnswer)
     })
 }
+
 
 /******************************
 *   Check Answer Function
@@ -125,6 +131,7 @@ function checkAnswer(event) {
     }
 }
 
+
 /******************************
 *   Next Question Function
 ******************************/
@@ -135,6 +142,7 @@ function nextQuestion() {
     choiceContainer.innerHTML = "";
     questionTitle.textContent = "";
 }
+
 
 /******************************
 *   Timer Function
@@ -160,9 +168,11 @@ function timer() {
     }, 1000) // countdown 1 second at a time
 }
 
+
 /******************************
 *   Submit Scores
 ******************************/
+
 function submit(event) {
     event.preventDefault();
 
@@ -171,26 +181,32 @@ function submit(event) {
     // get local storage of current scores and set as a variable
     var currentScore = JSON.parse(localStorage.getItem("highscores"));
 
-    // check if current score exists, if not create an empty array
-    if (currentScore == null) currentScore = [];
 
-    // // create empty object
-    var playerScore = {
-        playerName,
-        score,
+    if (playerName.length <= 3) {
+
+
+
+        // check if current score exists, if not create an empty array
+        if (currentScore == null) currentScore = [];
+
+        // // create empty object
+        var playerScore = {
+            playerName,
+            score,
+        }
+
+        //push player score object to current scores array
+        currentScore.push(playerScore);
+
+        // sort the order of scores
+        currentScore.sort((a, b) => b.score - a.score);
+
+        // set local storage
+        localStorage.setItem("highscores", JSON.stringify(currentScore));
+
+        // directs you to the highscores page.
+        window.location.href = "highscores.html";
+    } else {
+        alert("Maximum of 3 characters. Please try again.");
     }
-
-    //push player score object to current scores array
-    currentScore.push(playerScore);
-
-    // sort the order of scores
-    currentScore.sort((a, b) => b.score - a.score);
-
-    // set local storage
-    localStorage.setItem("highscores", JSON.stringify(currentScore));
-
-    // directs you to the highscores page.
-    window.location.href = "highscores.html";
 }
-
-
