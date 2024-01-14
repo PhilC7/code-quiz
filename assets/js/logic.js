@@ -14,8 +14,8 @@ var submitBtn = document.getElementById("submit");
 var feedbackContainer = document.getElementById("feedback");
 var time = document.getElementById("time");
 // Set audio variables
-var correctSound = document.getElementById("correctSound");
-var incorrectSound = document.getElementById("incorrectSound");
+var correctSound = new Audio("./assets/sfx/correct.wav");
+var incorrectSound = new Audio("./assets/sfx/incorrect.wav");
 
 
 /******************************
