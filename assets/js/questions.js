@@ -1,6 +1,7 @@
 /******************************
 *   Set questions in an array or objects.  
 ******************************/
+
 var questions = [
     {
         title: "Q1. What is the correct syntax for referring to an external script called 'xxx.js'?",
@@ -10,7 +11,7 @@ var questions = [
             "c. <script src = 'xxx.js'>",
             "d. <script = 'xxx.js'"
         ],
-        answer: "<script src = 'xxx.js'",
+        answer: "c. <script src = 'xxx.js'>",
     },
     {
         title: "Q2. Inside which element do we put the script tag?",
@@ -20,7 +21,7 @@ var questions = [
             "c. div tag",
             "d. script tag"
         ],
-        answer: "script tag",
+        answer: "d. script tag",
     },
     {
         title: "Q3. How do you call a function named 'myFunction'?",
@@ -40,7 +41,7 @@ var questions = [
             "c. Both the <head> and <body> section",
             "d. Outside the <body> section"
         ],
-        answer: "At the end of the <body> section",
+        answer: "a. At the end of the <body> section",
     },
     {
         title: "Q5. How do you write 'Hello World' in an alert box?",
@@ -50,6 +51,6 @@ var questions = [
             "c. confirm('Hello World')",
             "d. display('Hello World')"
         ],
-        answer: "alert('Hello World')",
+        answer: "b. alert('Hello World')",
     },
 ]
