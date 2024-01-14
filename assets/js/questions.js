@@ -3,28 +3,53 @@
 ******************************/
 var questions = [
     {
-        title: "Question 1",
-        choices: ["choice1", "choice2", "choice3", "choice4"],
-        answer: "choice1",
+        title: "Q1. What is the correct syntax for referring to an external script called 'xxx.js'?",
+        choices: [
+            "a. <script href= 'xxx.js'",
+            "b. <script name = 'xxx.js'",
+            "c. <script src = 'xxx.js'>",
+            "d. <script = 'xxx.js'"
+        ],
+        answer: "<script src = 'xxx.js'",
     },
     {
-        title: "Question 2",
-        choices: ["choice1", "choice2", "choice3", "choice4"],
-        answer: "choice2",
+        title: "Q2. Inside which element do we put the script tag?",
+        choices: [
+            "a. javaScript tag",
+            "b. head tag",
+            "c. div tag",
+            "d. script tag"
+        ],
+        answer: "script tag",
     },
     {
-        title: "Question 3",
-        choices: ["choice1", "choice2", "choice3", "choice4"],
-        answer: "choice3",
+        title: "Q3. How do you call a function named 'myFunction'?",
+        choices: [
+            "a. call myFunction()",
+            "b. myFunction()",
+            "c. call function(myFunction)",
+            "d. myFunction(call)"
+        ],
+        answer: "b. myFunction()",
     },
     {
-        title: "Question 4",
-        choices: ["choice1", "choice2", "choice3", "choice4"],
-        answer: "choice4",
+        title: "Q4, Where is the correct place to insert javaScript?",
+        choices: [
+            "a. At the end of the <body> section",
+            "b. At start of the <head> section",
+            "c. Both the <head> and <body> section",
+            "d. Outside the <body> section"
+        ],
+        answer: "At the end of the <body> section",
     },
     {
-        title: "Question 5",
-        choices: ["choice1", "choice2", "choice3", "choice4"],
-        answer: "choice3",
+        title: "Q5. How do you write 'Hello World' in an alert box?",
+        choices: [
+            "a. print('Hello World')",
+            "b. alert('Hello World')",
+            "c. confirm('Hello World')",
+            "d. display('Hello World')"
+        ],
+        answer: "alert('Hello World')",
     },
 ]

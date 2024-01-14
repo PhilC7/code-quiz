@@ -1,3 +1,7 @@
+/******************************
+*   Declare Global Variables  
+******************************/
+
 var clearBtn = document.getElementById("clear");
 var scoreList = document.getElementById("highscores");
 
@@ -18,19 +22,15 @@ function clearScores() {
 
 function displayScore() {
 
-    var highscores = JSON.parse(localStorage.getItem("highscores"))
+    var highscores = JSON.parse(localStorage.getItem("highscores"));
 
+    // for each loop to display each score in local storage
     highscores.forEach(playerScore => {
-
         var listItem = document.createElement("li");
-
         listItem.textContent = `${playerScore.playerName} - ${playerScore.score}`;
-
         scoreList.appendChild(listItem);
-
         console.log(listItem);
     });
-
     // event listener to clear scores
     clearBtn.addEventListener("click", clearScores);
 }

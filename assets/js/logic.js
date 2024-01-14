@@ -186,7 +186,7 @@ function submit(event) {
         // check if current score exists, if not create an empty array
         if (currentScore == null) currentScore = [];
 
-        // // create empty object
+        // // create empty object with key values
         var playerScore = {
             playerName,
             score,
