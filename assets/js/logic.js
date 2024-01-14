@@ -76,6 +76,7 @@ function askQuestion() {
     choiceContainer.innerHTML = "";
     // set current question to array number
     currentQuestion = questions[questionNumber];
+
     questionTitle.textContent = currentQuestion.title;
     displayChoices()
 
@@ -205,6 +206,9 @@ function submit(event) {
 
         // sort the order of scores
         currentScore.sort((a, b) => b.score - a.score);
+
+        // set high score list to 10 places
+        currentScore.splice(10);
 
         // set local storage
         localStorage.setItem("highscores", JSON.stringify(currentScore));

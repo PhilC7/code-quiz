@@ -29,7 +29,6 @@ function displayScore() {
         var listItem = document.createElement("li");
         listItem.textContent = `${playerScore.playerName} - ${playerScore.score}`;
         scoreList.appendChild(listItem);
-        console.log(listItem);
     });
     // event listener to clear scores
     clearBtn.addEventListener("click", clearScores);
