@@ -24,13 +24,15 @@ var countdown; // Declare countdown
 var questionNumber = 0;
 var currentQuestion = 0;
 
-
 /******************************
-*   Event Listeners  
+*   Event Listeners
 ******************************/
 
 // Start game
 startQuiz.addEventListener("click", startGame)
+
+// Submit scores
+submitBtn.addEventListener("click", submit);
 
 /******************************
 *   Start Game  
@@ -46,7 +48,6 @@ function startGame(event) {
 
 }
 
-
 /******************************
 *   Quiz Reset 
 ******************************/
@@ -57,8 +58,6 @@ function resetGame() {
     time.textContent = timeLeft;
     timer();
 }
-
-
 
 /******************************
 *   Ask Question Function
@@ -93,7 +92,6 @@ function displayChoices() {
         button.addEventListener("click", checkAnswer)
     })
 }
-
 
 /******************************
 *   Check Answer Function
@@ -135,15 +133,13 @@ function nextQuestion() {
     feedbackContainer.classList.add("hide");
     currentQuestion++
     choiceContainer.innerHTML = "";
-    questionTitle.textContent = ""
+    questionTitle.textContent = "";
 }
-
-
-
 
 /******************************
 *   Timer Function
 ******************************/
+
 function timer() {
     var countdown = setInterval(function () {
         timeLeft--
@@ -152,37 +148,49 @@ function timer() {
             time.textContent = timeLeft;
         }
 
+        // End game
         if (timeLeft <= 0 || questionNumber === questions.length) {
-            clearInterval(countdown);
-            score = timeLeft;
-            time.textContent = 0;
-            questionContainer.classList.add("hide");
-            endScreen.classList.remove("hide");
+            clearInterval(countdown); // stop timer
+            score = timeLeft; // add value of time left to score
+            finalScore.textContent = score; // add value of score to final score
+            time.textContent = 0; // reset timer
+            questionContainer.classList.add("hide"); //hide questions
+            endScreen.classList.remove("hide"); // show end screen
         }
     }, 1000) // countdown 1 second at a time
 }
 
-
-
-
-
 /******************************
-*   Testing Section
+*   Submit Scores
 ******************************/
+function submit(event) {
+    event.preventDefault();
+
+    var playerName = initials.value.trim();
+
+    // get local storage of current scores and set as a variable
+    var currentScore = JSON.parse(localStorage.getItem("highscores"));
+
+    // check if current score exists, if not create an empty array
+    if (currentScore == null) currentScore = [];
+
+    // // create empty object
+    var playerScore = {
+        playerName,
+        score,
+    }
+
+    //push player score object to current scores array
+    currentScore.push(playerScore);
+
+    // sort the order of scores
+    currentScore.sort((a, b) => b.score - a.score);
+
+    // set local storage
+    localStorage.setItem("highscores", JSON.stringify(currentScore));
+
+    // directs you to the highscores page.
+    window.location.href = "highscores.html";
+}
 
 
-
-
-
-
-
-
-/******************************
-*   Reference to question access - Delete logs when finished
-******************************/
-// access to questions
-// console.log(questions[0].title);
-// // access to choices
-// console.log(questions[0].choices);
-// // access to correct answer
-// console.log(questions[0].answer);
