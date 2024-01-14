@@ -183,9 +183,6 @@ function submit(event) {
 
 
     if (playerName.length <= 3) {
-
-
-
         // check if current score exists, if not create an empty array
         if (currentScore == null) currentScore = [];
 
