@@ -13,6 +13,10 @@ var initials = document.getElementById("initials");
 var submitBtn = document.getElementById("submit");
 var feedbackContainer = document.getElementById("feedback");
 var time = document.getElementById("time");
+// Set audio variables
+var correctSound = document.getElementById("correctSound");
+var incorrectSound = document.getElementById("incorrectSound");
+
 
 /******************************
 *   Set Variables  
@@ -99,6 +103,7 @@ function displayChoices() {
 }
 
 
+
 /******************************
 *   Check Answer
 ******************************/
@@ -106,14 +111,17 @@ function displayChoices() {
 function checkAnswer(event) {
     var answer = currentQuestion.answer;
     var selectedAnswer = event.target
+
     if (selectedAnswer.textContent == answer) {
         feedbackContainer.textContent = "Correct!";
         feedbackContainer.classList.remove("hide");
+        correctSound.play();
     } else if (selectedAnswer.textContent !== answer) {
         timeLeft -= 10;
         time.textContent = timeLeft;
         feedbackContainer.textContent = "Incorrect!";
         feedbackContainer.classList.remove("hide");
+        incorrectSound.play();
     }
 
     setTimeout(function () {
