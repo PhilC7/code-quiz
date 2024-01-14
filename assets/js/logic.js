@@ -64,7 +64,7 @@ function resetGame() {
 
 
 /******************************
-*   Ask Question Function
+*   Ask Question
 ******************************/
 
 function askQuestion() {
@@ -80,7 +80,7 @@ function askQuestion() {
 
 
 /******************************
-*   Display Choices Function
+*   Display Choices
 ******************************/
 
 function displayChoices() {
@@ -100,7 +100,7 @@ function displayChoices() {
 
 
 /******************************
-*   Check Answer Function
+*   Check Answer
 ******************************/
 
 function checkAnswer(event) {
@@ -133,7 +133,7 @@ function checkAnswer(event) {
 
 
 /******************************
-*   Next Question Function
+*   Next Question
 ******************************/
 
 function nextQuestion() {
@@ -145,7 +145,7 @@ function nextQuestion() {
 
 
 /******************************
-*   Timer Function
+*   Timer
 ******************************/
 
 function timer() {
