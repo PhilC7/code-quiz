@@ -27,7 +27,21 @@ How to play the game:
 
 ### This is how the page should look.
 
-![Alt text](<Screenshot 2023-12-30 at 11.48.25.png>)
+#### Start Game
+
+![start-game](./assets/images/start-page.png)
+
+#### During Game
+
+![during-game](./assets/images/game-page.png)
+
+#### Submit Score
+
+![submit-score](./assets/images/submit-page.png)
+
+#### Highscores View
+
+![highscore-page](./assets/images/highscore-page.png)
 
 # Credits
 
