@@ -113,16 +113,16 @@ function checkAnswer(event) {
     var answer = currentQuestion.answer;
     var selectedAnswer = event.target
 
-    if (selectedAnswer.textContent == answer) {
-        feedbackContainer.textContent = "Correct!";
-        feedbackContainer.classList.remove("hide");
-        correctSound.play();
-    } else if (selectedAnswer.textContent !== answer) {
+    if (selectedAnswer.textContent !== answer) {
         timeLeft -= 10;
         time.textContent = timeLeft;
         feedbackContainer.textContent = "Incorrect!";
         feedbackContainer.classList.remove("hide");
         incorrectSound.play();
+    } else {
+        feedbackContainer.textContent = "Correct!";
+        feedbackContainer.classList.remove("hide");
+        correctSound.play();
     }
 
     setTimeout(function () {
@@ -138,18 +138,6 @@ function checkAnswer(event) {
     } else {
         askQuestion();
     }
-}
-
-
-/******************************
-*   Next Question
-******************************/
-
-function nextQuestion() {
-    feedbackContainer.classList.add("hide");
-    currentQuestion++
-    choiceContainer.innerHTML = "";
-    questionTitle.textContent = "";
 }
 
 
